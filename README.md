@@ -78,9 +78,6 @@ Check out the premium Glassmorphism design in action:
   </table>
 </div>
 
-> [!IMPORTANT]
-> To display actual previews, capture screenshots from your simulator and save them as `home.png`, `insights.png`, `add.png`, and `search.png` inside the `screenshots/` directory.
-
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
