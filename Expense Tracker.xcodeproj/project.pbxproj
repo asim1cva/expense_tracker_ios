@@ -16,6 +16,11 @@
 			path = "Expense Tracker";
 			sourceTree = "<group>";
 		};
+		ED5E1A332F4C415E00E3C6B4 /* screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = screenshots;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		ED4496B82F484B4600BE9C5D = {
 			isa = PBXGroup;
 			children = (
+				ED5E1A332F4C415E00E3C6B4 /* screenshots */,
 				ED4496C32F484B4600BE9C5D /* Expense Tracker */,
 				ED5E19ED2F4C365B00E3C6B4 /* Expense Tracker.app */,
 			);
@@ -54,6 +60,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				ED4496C32F484B4600BE9C5D /* Expense Tracker */,
+				ED5E1A332F4C415E00E3C6B4 /* screenshots */,
 			);
 			name = "Expense Tracker";
 			packageProductDependencies = (
