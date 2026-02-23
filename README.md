@@ -47,7 +47,7 @@ Expense Tracker/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/asim1cva/expense-tracker.git
+   git clone https://github.com/asim1cva/expense_tracker_ios.git
    ```
 2. Open `Expense Tracker.xcodeproj` in Xcode.
 3. Ensure the target is set to a supported iOS simulator or physical device.
