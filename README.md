@@ -4,6 +4,31 @@
 
 ---
 
+## 📸 Visual Preview
+
+Check out the premium Glassmorphism design in action:
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Dashboard</b></td>
+      <td align="center"><b>Insights</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/home.png" width="300" alt="Dashboard View"></td>
+      <td><img src="screenshots/insights.png" width="300" alt="Insights View"></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Add Transaction</b></td>
+      <td align="center"><b>Search Experience</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/add.png" width="300" alt="Add Transaction"></td>
+      <td><img src="screenshots/search.png" width="300" alt="Search Filtering"></td>
+    </tr>
+  </table>
+</div>
+
 ## ✨ Features
 
 - **💎 Glassmorphism UI**: A state-of-the-art interface featuring mesh gradients, frosted glass components, and silky-smooth animations.
@@ -53,31 +78,6 @@ Expense Tracker/
 3. Ensure the target is set to a supported iOS simulator or physical device.
 4. Press `Cmd + R` to Build and Run.
 
-## 📸 Visual Preview
-
-Check out the premium Glassmorphism design in action:
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>Dashboard</b></td>
-      <td align="center"><b>Insights</b></td>
-    </tr>
-    <tr>
-      <td><img src="screenshots/home.png" width="300" alt="Dashboard View"></td>
-      <td><img src="screenshots/insights.png" width="300" alt="Insights View"></td>
-    </tr>
-    <tr>
-      <td align="center"><b>Add Transaction</b></td>
-      <td align="center"><b>Search Experience</b></td>
-    </tr>
-    <tr>
-      <td><img src="screenshots/add.png" width="300" alt="Add Transaction"></td>
-      <td><img src="screenshots/search.png" width="300" alt="Search Filtering"></td>
-    </tr>
-  </table>
-</div>
-
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -87,7 +87,6 @@ Contributions are what make the open-source community such an amazing place to l
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
 
 ---
 

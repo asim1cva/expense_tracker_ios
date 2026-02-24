@@ -9,51 +9,68 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             List {
-                // Header Group (Summary + Filters)
+                // Pro Header & Greeting
                 Group {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Welcome Back,")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.secondary)
+                        Text("Your Portfolio")
+                            .font(.system(size: 28, weight: .bold))
+                    }
+                    .padding(.top, 12)
+
                     SummaryCard(
                         income: viewModel.totalIncome,
                         expense: viewModel.totalExpenses,
                         balance: viewModel.totalBalance
                     )
-                    .padding(.top, 8)
+                    .padding(.top, 10)
 
-                    VStack(spacing: 16) {
+                    VStack(spacing: 20) {
                         TransactionTypeFilter(selectedType: $viewModel.selectedType)
 
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 18) {
-                                CategoryCircleFilter(
-                                    title: "All",
-                                    icon: "slider.horizontal.3",
-                                    color: .blue,
-                                    isSelected: viewModel.selectedCategory == nil
-                                ) {
-                                    viewModel.selectedCategory = nil
-                                }
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Categories")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.secondary)
+                                .textCase(.uppercase)
+                                .padding(.horizontal, 4)
 
-                                ForEach(TransactionCategory.allCases) { category in
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 20) {
                                     CategoryCircleFilter(
-                                        title: category.rawValue,
-                                        icon: category.icon,
-                                        color: category.color,
-                                        isSelected: viewModel.selectedCategory == category
+                                        title: "All",
+                                        icon: "slider.horizontal.3",
+                                        color: .blue,
+                                        isSelected: viewModel.selectedCategory == nil
                                     ) {
-                                        viewModel.selectedCategory = category
+                                        viewModel.selectedCategory = nil
+                                    }
+
+                                    ForEach(TransactionCategory.allCases) { category in
+                                        CategoryCircleFilter(
+                                            title: category.rawValue,
+                                            icon: category.icon,
+                                            color: category.color,
+                                            isSelected: viewModel.selectedCategory == category
+                                        ) {
+                                            viewModel.selectedCategory = category
+                                        }
                                     }
                                 }
+                                .padding(.vertical, 4)
                             }
-                            .padding(.vertical, 4)
                         }
                     }
-                    .padding(.top, 8)
+                    .padding(.top, 24)
                 }
                 .padding(.horizontal)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
 
-                // Transactions List
+                // Transactions List Section
                 Section {
                     let filteredTransactions = viewModel.transactions.filter {
                         searchText.isEmpty || $0.title.localizedCaseInsensitiveContains(searchText)
@@ -67,7 +84,7 @@ struct HomeView: View {
                         ForEach(filteredTransactions) { transaction in
                             TransactionRow(transaction: transaction)
                                 .listRowInsets(
-                                    EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
+                                    EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
                                 )
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
@@ -84,36 +101,55 @@ struct HomeView: View {
                         }
                     }
                 } header: {
-                    Text("Recent Activity")
-                        .font(.subheadline.bold())
-                        .foregroundColor(.secondary)
-                        .textCase(nil)
-                        .padding(.horizontal)
-                        .padding(.top, 16)
-                        .padding(.bottom, 8)
+                    HStack {
+                        Text("Transactions")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Button("View All") {
+                            // Action for viewing all
+                        }
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.blue)
+                    }
+                    .textCase(nil)
+                    .padding(.horizontal)
+                    .padding(.top, 32)
+                    .padding(.bottom, 12)
                 }
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
-//            .searchable(text: $searchText, prompt: "Search transactions...")
+            .searchable(text: $searchText, prompt: "Search history...")
             .background {
                 ZStack {
                     Color(UIColor.systemGroupedBackground)
-                    Circle()
-                        .fill(Color.blue.opacity(0.12))
-                        .blur(radius: 80)
-                        .offset(x: -120, y: -200)
-                    Circle()
-                        .fill(Color.purple.opacity(0.1))
-                        .blur(radius: 80)
-                        .offset(x: 120, y: 200)
+
+                    // Ultra-soft mesh background
+                    RadialGradient(
+                        colors: [Color.blue.opacity(0.1), .clear], center: .topLeading,
+                        startRadius: 0, endRadius: 500
+                    )
+                    .ignoresSafeArea()
+
+                    RadialGradient(
+                        colors: [Color.purple.opacity(0.08), .clear], center: .bottomTrailing,
+                        startRadius: 0, endRadius: 600
+                    )
+                    .ignoresSafeArea()
                 }
-                .ignoresSafeArea()
             }
-            .navigationTitle("Finances")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.secondary)
+                        .font(.title3)
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAddTransaction = true
